@@ -14,8 +14,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.NavX;
 
 /**
@@ -26,15 +25,14 @@ import frc.robot.subsystems.NavX;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
-  
-  public static OI m_oi;
-  public static NavX m_navX;
+    public static OI m_oi;
+    public static NavX m_navX;
+    public static Drivetrain m_drivetrain;
 
-  Command m_autonomousCommand;
-  SendableChooser<Command> m_chooser = new SendableChooser<>();
+    Command m_autonomousCommand;
+    SendableChooser<Command> m_chooser = new SendableChooser<>();
   
-  PowerDistributionPanel pdp;
+    PowerDistributionPanel pdp;
   
   /**
    * This function is run when the robot is first started up and should be
@@ -43,10 +41,13 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     pdp = new PowerDistributionPanel();
+
+    m_drivetrain = new Drivetrain();
+
     m_navX = new NavX();
+
+    //Always last
     m_oi = new OI();
-    m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
-    // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
   }
 

@@ -15,13 +15,20 @@ package frc.robot;
  * floating around.
  */
 public class RobotMap {
-  // For example to map the left and right motors, you could define the
-  // following variables to use with your drivetrain subsystem.
-  // public static int leftMotor = 1;
-  // public static int rightMotor = 2;
+    public static double driveEncoderDistancePerPulse = 0.0236065636; //Just copied this from PowerUp (Kobi)
 
-  // If you are using multiple modules, make sure to define both the port
-  // number and the module. For example you with a rangefinder:
-  // public static int rangefinderPort = 1;
-  // public static int rangefinderModule = 1;
+    //All placeholder IDs, haven't been programmed into the CAN bus yet
+    public static int leftFrontDriveMotorID = 1;
+    public static int leftRearDriveMotorID = 2;
+    public static int leftDriveEncoderChannelA = 0;
+    public static int leftDriveEncoderChannelB = 1;
+
+    public static int rightFrontDriveMotorID = 3;
+    public static int rightRearDriveMotorID = 4;
+    public static int rightDriveEncoderChannelA = 2;
+    public static int rightDriveEncoderChannelB = 3;
+
+    public static double wheelDiameter = 6; //Inches (placeholder value, needs to be measured)
+    public static double wheelCircumference = wheelDiameter * Math.PI; //Inches
+    public static double ticksPerInch = 360 / wheelCircumference;
 }
