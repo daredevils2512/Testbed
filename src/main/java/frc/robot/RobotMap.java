@@ -15,9 +15,7 @@ package frc.robot;
  * floating around.
  */
 public class RobotMap {
-    public static double driveEncoderDistancePerPulse = 0.0236065636; //Just copied this from PowerUp (Kobi)
-
-    //All placeholder IDs, haven't been programmed into the CAN bus yet
+    //All placeholder IDs, haven't been programmed into the CAN thingydoodle yet
     public static int leftFrontDriveMotorID = 1;
     public static int leftRearDriveMotorID = 2;
     public static int leftDriveEncoderChannelA = 0;
@@ -27,8 +25,4 @@ public class RobotMap {
     public static int rightRearDriveMotorID = 4;
     public static int rightDriveEncoderChannelA = 2;
     public static int rightDriveEncoderChannelB = 3;
-
-    public static double wheelDiameter = 6; //Inches (placeholder value, needs to be measured)
-    public static double wheelCircumference = wheelDiameter * Math.PI; //Inches
-    public static double ticksPerInch = 360 / wheelCircumference;
 }

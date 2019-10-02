@@ -8,11 +8,10 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
@@ -22,6 +21,13 @@ import frc.robot.commands.ArcadeDrive;
  * Add your docs here.
  */
 public class Drivetrain extends Subsystem {
+    private static double gearRatio = 1;
+    private static double encoderPulsesPerRevolution = 128 * gearRatio; //Pulses per revolution of whatever encoders we use
+    private static double encoderRevolutionsPerPulse = 1 / encoderPulsesPerRevolution;
+    private static double wheelDiameter = 0; //Don't know this atm
+    private static double wheelCircumference = Math.PI * wheelDiameter;
+    private static double encoderDistancePerPulse = encoderRevolutionsPerPulse * wheelCircumference;
+
     private WPI_TalonSRX leftFrontMotor;
     private WPI_TalonSRX leftRearMotor;
     private WPI_TalonSRX rightFrontMotor;
@@ -41,8 +47,10 @@ public class Drivetrain extends Subsystem {
         rightGroup = new SpeedControllerGroup(rightFrontMotor, rightRearMotor);
         drivetrain = new DifferentialDrive(leftGroup, rightGroup);
 
-        leftEncoder = new Encoder(RobotMap.leftDriveEncoderChannelA, RobotMap.leftDriveEncoderChannelB, false);
-        rightEncoder = new Encoder(RobotMap.rightDriveEncoderChannelA, RobotMap.rightDriveEncoderChannelB, true);
+        leftEncoder = new Encoder(RobotMap.leftDriveEncoderChannelA, RobotMap.leftDriveEncoderChannelB, false, EncodingType.k4X);
+        rightEncoder = new Encoder(RobotMap.rightDriveEncoderChannelA, RobotMap.rightDriveEncoderChannelB, true, EncodingType.k4X);
+        leftEncoder.setDistancePerPulse(encoderDistancePerPulse);
+        rightEncoder.setDistancePerPulse(encoderDistancePerPulse);
     }
 
     @Override
