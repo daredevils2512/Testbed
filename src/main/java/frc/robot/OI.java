@@ -18,7 +18,7 @@ public class OI {
 
     public Joystick driver = new Joystick(this.driverPort);
 
-    private double desensitize(double value) {
+    private static double desensitize(double value) {
         return value < 0.15 ? 0.0 : value;
     }
 

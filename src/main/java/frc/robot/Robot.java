@@ -42,7 +42,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     pdp = new PowerDistributionPanel();
 
-    m_drivetrain = new Drivetrain();
+    // m_drivetrain = new Drivetrain();
 
     m_navX = new NavX();
 
