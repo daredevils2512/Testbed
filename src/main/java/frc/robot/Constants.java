@@ -8,6 +8,13 @@
 package frc.robot;
 
 public final class Constants {
+    //Horizontal and vertical offsets are in degrees
+    public static final double LIMELIGHT_MIN_X = -29.8;
+    public static final double LIMELIGHT_MAX_X = 29.8;
+    public static final double LIMELIGHT_MIN_Y = -24.85;
+    public static final double LIMELIGHT_MAX_Y = 24.85;
+
+
     public static final double WHEEL_DIAMETER = 6; //Don't actually know this yet
 
     private Constants() {
