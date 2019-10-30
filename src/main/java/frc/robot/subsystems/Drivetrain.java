@@ -23,8 +23,8 @@ import frc.robot.commands.ArcadeDrive;
 public class Drivetrain extends Subsystem {
     private static final int leftFrontMotorID = 1;
     private static final int leftRearMotorID = 2;
-    private static final int rightFrontMotorID = 3;
-    private static final int rightRearMotorID = 4;
+    private static final int rightFrontMotorID = 4;
+    private static final int rightRearMotorID = 6;
 
     private static final int leftEncoderChannelA = 0;
     private static final int leftEncoderChannelB = 1;
@@ -70,6 +70,8 @@ public class Drivetrain extends Subsystem {
     public void arcadeDrive(double move, double turn) {
         drivetrain.arcadeDrive(move, turn);
     }
+
+    // public void tankDrive(double get)
 
     public double getLeftEncoderDistance() {
         return leftEncoder.getDistance();

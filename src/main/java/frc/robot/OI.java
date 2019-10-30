@@ -19,7 +19,7 @@ public class OI {
     public Joystick driver = new Joystick(this.driverPort);
 
     private static double desensitize(double value) {
-        return value < 0.15 ? 0.0 : value;
+        return Math.abs(value) < Constants.DRIVETRAIN_DESENSITIZE ? 0.0 : value;
     }
 
     public double getMove() {
@@ -27,6 +27,6 @@ public class OI {
     }
 
     public double getTurn() {
-        return desensitize(driver.getRawAxis(4));
+        return -desensitize(driver.getRawAxis(4));
     }
 }

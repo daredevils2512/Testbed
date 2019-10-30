@@ -32,7 +32,7 @@ public class Robot extends TimedRobot {
     Command m_autonomousCommand;
     SendableChooser<Command> m_chooser = new SendableChooser<>();
   
-    PowerDistributionPanel pdp;
+    // PowerDistributionPanel pdp;
   
   /**
    * This function is run when the robot is first started up and should be
@@ -40,9 +40,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    pdp = new PowerDistributionPanel();
+    // pdp = new PowerDistributionPanel();
 
-    // m_drivetrain = new Drivetrain();
+    m_drivetrain = new Drivetrain();
 
     m_navX = new NavX();
 
@@ -133,7 +133,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    SmartDashboard.putData(pdp);
+    // SmartDashboard.putData(pdp);
+    SmartDashboard.putNumber("Left drive encoder", m_drivetrain.getLeftEncoderDistance());
+    SmartDashboard.putNumber("Right drive encoder", m_drivetrain.getRightEncoderDistance());
     Scheduler.getInstance().run();
   }
 
