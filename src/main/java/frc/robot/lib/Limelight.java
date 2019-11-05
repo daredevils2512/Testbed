@@ -11,6 +11,7 @@ public final class Limelight {
     private NetworkTableEntry ty;
     private NetworkTableEntry ta;
     private NetworkTableEntry ts;
+    private NetworkTableEntry tv;
 
     public Limelight() {
         tableName = "limelight";
@@ -28,6 +29,11 @@ public final class Limelight {
         ty = table.getEntry("ty");
         ta = table.getEntry("ta");
         ts = table.getEntry("ts");
+        tv = table.getEntry("tv");
+    }
+
+    public boolean hasTarget() {
+        return tv.getDouble(0.0) < 1.0;
     }
 
     /**
