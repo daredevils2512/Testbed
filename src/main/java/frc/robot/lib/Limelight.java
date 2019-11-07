@@ -7,11 +7,11 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 public final class Limelight {
     private final String tableName;
     private NetworkTable table;
+    private NetworkTableEntry tv;
     private NetworkTableEntry tx;
     private NetworkTableEntry ty;
     private NetworkTableEntry ta;
     private NetworkTableEntry ts;
-    private NetworkTableEntry tv;
 
     public Limelight() {
         tableName = "limelight";
@@ -25,15 +25,38 @@ public final class Limelight {
 
     private void Init() {
         table = NetworkTableInstance.getDefault().getTable(tableName);
+        tv = table.getEntry("tv");
         tx = table.getEntry("tx");
         ty = table.getEntry("ty");
         ta = table.getEntry("ta");
         ts = table.getEntry("ts");
-        tv = table.getEntry("tv");
+        ledOn();
     }
 
-    public boolean hasTarget() {
-        return tv.getDouble(0.0) < 1.0;
+    /**
+     * docs and list of modes at
+     * http://docs.limelightvision.io/en/latest/networktables_api.html
+     * @param variable the setting that will be changed. The options are ledMode, camMode, pipeline, stream, and snapshot
+     * @param mode the change in the setting; and int between 0 and 9
+     */
+    private void setMode(String variable, int mode) {
+        NetworkTableInstance.getDefault().getTable("limelight").getEntry(variable).setNumber(mode);
+    }
+
+    public void ledOn() {
+        setMode("ledMode", 0);
+    }
+
+    public void ledOff() {
+        setMode("ledMode", 1);
+    }
+
+    /**
+     * weather or not the target is valid, 
+     * @return false if variable is null or target isn't found, true if the target is found
+     */
+    public boolean getTargetValid() {
+        return tv.getBoolean(false);
     }
 
     /**

@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
+import frc.robot.lib.Limelight;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.NavX;
 
@@ -28,6 +28,7 @@ public class Robot extends TimedRobot {
     public static OI m_oi;
     public static NavX m_navX;
     public static Drivetrain m_drivetrain;
+    public static Limelight m_limelight;
 
     Command m_autonomousCommand;
     SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -41,6 +42,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     // pdp = new PowerDistributionPanel();
+    m_limelight = new Limelight();
 
     m_drivetrain = new Drivetrain();
 
@@ -65,6 +67,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("pitch", m_navX.pitch());
     SmartDashboard.putNumber("yaw", m_navX.yaw());
     SmartDashboard.putNumber("roll", m_navX.roll());
+    SmartDashboard.putNumber("move", Robot.m_oi.getMove());
+    SmartDashboard.putNumber("turn", Robot.m_oi.getTurn());
   }
 
   /**

@@ -36,6 +36,6 @@ public class OI {
     }
 
     public double getTurn() {
-        return -desensitize(driver.getRawAxis(4));
+        return -desensitize(driver.getRawAxis(0));
     }
 }
