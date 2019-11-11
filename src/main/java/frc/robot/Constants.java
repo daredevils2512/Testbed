@@ -14,6 +14,7 @@ public final class Constants {
     public static final double LIMELIGHT_MIN_Y = -24.85;
     public static final double LIMELIGHT_MAX_Y = 24.85;
 
+    public static final double DRIVETRAIN_DESENSITIZE = 0.15;
 
     public static final double WHEEL_DIAMETER = 6; //Don't actually know this yet
 
