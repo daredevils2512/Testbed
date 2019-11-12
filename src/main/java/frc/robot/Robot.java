@@ -69,6 +69,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("roll", m_navX.roll());
     SmartDashboard.putNumber("move", Robot.m_oi.getMove());
     SmartDashboard.putNumber("turn", Robot.m_oi.getTurn());
+    SmartDashboard.putBoolean("is valid", Robot.m_limelight.getTargetValid());
   }
 
   /**
