@@ -56,12 +56,12 @@ public final class Limelight {
      * @return false if variable is null or target isn't found, true if the target is found
      */
     public boolean getTargetValid() {
-        return tv.getDouble(1.0) == 1.0;
+        return !(tv.getDouble(0.0) < 1.0);
     }
 
     /**
      * Horizontal offset from crosshair to target
-     * @return Double ranging from -29.8 to 29.8 degrees
+     * @return double ranging from -29.8 to 29.8 degrees
      */
     public double getHorizontalOffset() {
         return tx.getDouble(0.0);
@@ -69,7 +69,7 @@ public final class Limelight {
 
     /**
      * Vertical offset from crosshair to target
-     * @return Double ranging from -24.85 to 24.85 degrees
+     * @return double ranging from -24.85 to 24.85 degrees
      */
     public double getVerticalOfffset() {
         return ty.getDouble(0.0);
