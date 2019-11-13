@@ -56,7 +56,7 @@ public final class Limelight {
      * @return false if variable is null or target isn't found, true if the target is found
      */
     public boolean getTargetValid() {
-        return tv.getBoolean(false);
+        return tv.getDouble(1.0) == 1.0;
     }
 
     /**
