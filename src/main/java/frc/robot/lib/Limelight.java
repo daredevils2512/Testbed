@@ -30,7 +30,7 @@ public final class Limelight {
         ty = table.getEntry("ty");
         ta = table.getEntry("ta");
         ts = table.getEntry("ts");
-        ledOn();
+        ledOff();
     }
 
     /**

@@ -46,11 +46,13 @@ public class FindTarget extends Command {
     @Override
     protected void end() {
         Robot.m_drivetrain.arcadeDrive(0.0, 0.0);
+        Robot.m_limelight.ledOff();
     }
 
     @Override
     protected void interrupted() {
         Robot.m_drivetrain.arcadeDrive(0.0, 0.0);
+        Robot.m_limelight.ledOff();
     }
 
     @Override
