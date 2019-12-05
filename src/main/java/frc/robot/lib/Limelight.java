@@ -51,6 +51,24 @@ public final class Limelight {
         setMode("ledMode", 1);
     }
 
+    public void setPipeline(int pipeline) {
+        setMode("pipeline", pipeline);
+    }
+
+    /**
+     * Turns off vision processing and increases exposure for driving.
+     */
+    public void driverCameraOn() {
+        setMode("camMode", 1);
+    }
+
+    /**
+     * Sets camera to current exposure settings and resumes vision.
+     */
+    public void driverCameraOff() {
+        setMode("camMode", 0);
+    }
+
     /**
      * weather or not the target is valid, 
      * @return false if variable is null or target isn't found, true if the target is found
