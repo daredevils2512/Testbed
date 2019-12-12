@@ -33,15 +33,15 @@ public class FindTarget extends Command {
                 //calculates the ramped speed between the minimum speed and one using the ramp coefficient
                 //turnSpeed = Math.min(Math.max(headingError * rampCoeff, minSpeed), 1); 
                 turnSpeed = -(Robot.m_limelight.getHorizontalOffset() * STEER_K);
-                driveSpeed = Math.min((desiredTa - Robot.m_limelight.getTargetArea()) * DRIVE_K, 0.7);
+                driveSpeed = Math.min((desiredTa - Robot.m_limelight.getTargetArea()) * DRIVE_K, 0.8);
         //    }
         } else {
             driveSpeed = 0.1;
         }
         SmartDashboard.putNumber("turn speed", turnSpeed);
         SmartDashboard.putNumber("drive speed", driveSpeed);
-        Robot.m_drivetrain.arcadeDrive(-driveSpeed, turnSpeed);
-    }
+        Robot.m_drivetrain.arcadeDrive(-driveSpeed, turnSpeed == 0 ? 0.5 : turnSpeed);
+    } 
 
     @Override
     protected void end() {
