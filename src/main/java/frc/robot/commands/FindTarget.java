@@ -38,6 +38,11 @@ public class FindTarget extends Command {
         } else {
             driveSpeed = 0.1;
         }
+
+        if (Robot.m_distanceSensor.getDistance() < 12) {
+            driveSpeed = 0.1;
+        }
+        
         SmartDashboard.putNumber("turn speed", turnSpeed);
         SmartDashboard.putNumber("drive speed", driveSpeed);
         Robot.m_drivetrain.arcadeDrive(-driveSpeed, turnSpeed == 0 ? 0.5 : turnSpeed);

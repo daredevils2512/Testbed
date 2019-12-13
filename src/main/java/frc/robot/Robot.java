@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.lib.DistanceSensor;
 import frc.robot.lib.Limelight;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.NavX;
@@ -29,6 +30,7 @@ public class Robot extends TimedRobot {
     public static NavX m_navX;
     public static Drivetrain m_drivetrain;
     public static Limelight m_limelight;
+    public static DistanceSensor m_distanceSensor;
 
     Command m_autonomousCommand;
     SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -42,6 +44,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     // pdp = new PowerDistributionPanel();
+    m_distanceSensor = new DistanceSensor();
     m_limelight = new Limelight();
 
     m_drivetrain = new Drivetrain();
